@@ -1,0 +1,67 @@
+#Ejercicio 1: Crea una clase persona. Sus atributos deben ser su nombre y su edad. Además, crea un método cumpleaños, que aumente en 1 la edad de la persona
+class Persona:
+    def __init__(self, nombre, edad): 
+        self.nombre = nombre
+        self.edad = edad
+
+    def cumpleaños(self):
+        self.edad += 1
+        print(f"Feliz cumpleaños, {self.nombre}! Ahora tienes {self.edad} años.")
+        
+persona_ejemplo = Persona("Juan", 25)
+print(f"{persona_ejemplo.nombre} tiene {persona_ejemplo.edad} años.")
+
+persona_ejemplo.cumpleaños()
+
+#Ejercicio 2: Para la clase anterior definir el método str. Debe retornar al menos el nombre de la persona
+class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def cumpleaños(self):
+        self.edad += 1
+        print(f"Feliz cumpleaños, {self.nombre}! Ahora tienes {self.edad} años.")
+
+    def __str__(self):
+        return f"Nombre: {self.nombre}, Edad: {self.edad}"
+
+# Ejemplo de uso
+persona_ejemplo = Persona("Juan", 25)
+print(persona_ejemplo)  # Esto llamará automáticamente al método __str__
+
+persona_ejemplo.cumpleaños()
+print(persona_ejemplo)  # Mostrará la información actualizada después del cumpleaños
+
+#Ejercicio 3
+
+class Persona:
+  def __init__(self, _nombre, _edad, _saldo):
+    self.nombre = _nombre
+    self.edad = _edad
+    self.saldo = _saldo
+ 
+  def cumpleanhos(self):
+    self.edad += 1
+ 
+  def transferencia(self, persona2, monto):
+    if self.saldo >= monto:
+      self.saldo -= monto
+      persona2.saldo += monto
+      print("Transferencia ok!")
+    else:
+      print("No se puede efectuar la transaccion")
+ 
+  def __str__(self):
+    return "Persona: " + self.nombre
+ 
+ 
+p = Persona("Jose", 10, 2)
+p2 = Persona("Pedro", 20, 20)
+p2.transferencia(p, 7)
+# Descomentar la linea de abajo y comentar la de arriba para ver una transferencia no factible.
+# p2.transferencia(p, 70)
+print("Saldo de p2: ")
+print(p2.saldo)
+print("Saldo de p1: ")
+print(p.saldo)
